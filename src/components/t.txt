@@ -1,0 +1,436 @@
+import React, { useEffect, useState, useRef } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+const Programmes = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAIOpen, setIsAIOpen] = useState(false);
+  const [aiMessages, setAiMessages] = useState([
+    { type: 'bot', text: 'Hello! Ask me about admissions, programmes, fees, or campus life.' }
+  ]);
+  const [aiInput, setAiInput] = useState('');
+  const [activeCategory, setActiveCategory] = useState('all');
+  const messagesEndRef = useRef(null);
+
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({ 
+      duration: 800, 
+      once: true, 
+      offset: 50 
+    });
+  }, []);
+
+  // Toggle mobile menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  // AI Assistant functions
+  const toggleAI = () => {
+    setIsAIOpen(!isAIOpen);
+  };
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [aiMessages]);
+
+  const getAIResponse = (question) => {
+    const lower = question.toLowerCase();
+    if (lower.includes('admission') || lower.includes('apply')) {
+      return 'You can apply online via our Admissions page. Requirements vary by programme.';
+    }
+    if (lower.includes('fee') || lower.includes('cost') || lower.includes('tuition')) {
+      return 'Tuition fees depend on the programme. Please visit the Admissions page for detailed fee structure.';
+    }
+    if (lower.includes('programme') || lower.includes('course')) {
+      return 'We offer Entrepreneurship, Business Management, Technology, and Fresh Graduate programmes. Visit our Programmes page for details.';
+    }
+    if (lower.includes('campus') || lower.includes('location')) {
+      return 'Our main campus is at 123 Innovation Drive, Lagos. We also have virtual options.';
+    }
+    if (lower.includes('entrepreneurship')) {
+      return 'Our Entrepreneurship programme is a 12-week intensive bootcamp designed to transform aspiring entrepreneurs into business leaders.';
+    }
+    if (lower.includes('technology') || lower.includes('tech')) {
+      return 'Our Technology programme covers full-stack development, AI, and data science over 24 weeks with hands-on projects.';
+    }
+    if (lower.includes('fresh graduate')) {
+      return 'The Fresh Graduate Programme is a 12-week transition programme designed to prepare recent graduates for industry careers.';
+    }
+    return 'Thank you for your question. Please contact our admissions office for detailed information.';
+  };
+
+  const askAI = () => {
+    if (!aiInput.trim()) return;
+
+    setAiMessages(prev => [...prev, { type: 'user', text: aiInput }]);
+
+    const reply = getAIResponse(aiInput);
+    setTimeout(() => {
+      setAiMessages(prev => [...prev, { type: 'bot', text: reply }]);
+    }, 300);
+
+    setAiInput('');
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      askAI();
+    }
+  };
+
+  // Navigation links
+  const navLinks = [
+    { to: '/', label: 'Home' },
+    { to: '/about', label: 'About' },
+    { to: '/programmes', label: 'Programmes', active: true },
+    { to: '/admissions', label: 'Admissions' },
+    { to: '/research', label: 'Research' },
+    { to: '/student-life', label: 'Student Life' },
+    { to: '/news', label: 'News' },
+    { to: '/contact', label: 'Contact' },
+    { to: '/verify', label: 'Verify' },
+  ];
+
+  // Category tabs
+  const categories = [
+    { id: 'all', label: 'All' },
+    { id: 'entrepreneurship', label: 'Entrepreneurship' },
+    { id: 'business', label: 'Business' },
+    { id: 'technology', label: 'Technology' },
+    { id: 'professional', label: 'Professional' },
+  ];
+
+  // Programmes data
+  const programmes = [
+    {
+      id: 1,
+      category: 'entrepreneurship',
+      icon: 'fas fa-lightbulb',
+      title: 'Entrepreneurship',
+      badge: '12 Weeks',
+      duration: '12 Weeks',
+      intake: 'Quarterly',
+      certificate: 'Yes',
+      mode: 'Hybrid',
+      description: 'An intensive bootcamp designed to transform aspiring entrepreneurs into business leaders. Learn to validate ideas, build MVPs, and launch successful startups.',
+      modules: ['Ideation & Validation', 'Business Model Canvas', 'Financial Planning', 'Marketing Strategy', 'Pitch & Fundraising'],
+      tuition: '₦350,000'
+    },
+    {
+      id: 2,
+      category: 'business',
+      icon: 'fas fa-chart-line',
+      title: 'Business Management',
+      badge: '16 Weeks',
+      duration: '16 Weeks',
+      intake: 'Biannual',
+      certificate: 'Yes',
+      mode: 'Online',
+      description: 'Develop strategic leadership and operational excellence skills. This programme covers management principles, organizational behavior, and business strategy.',
+      modules: ['Strategic Management', 'Operations & Logistics', 'Human Resources', 'Financial Management', 'Business Analytics'],
+      tuition: '₦450,000'
+    },
+    {
+      id: 3,
+      category: 'technology',
+      icon: 'fas fa-code',
+      title: 'Technology',
+      badge: '24 Weeks',
+      duration: '24 Weeks',
+      intake: 'Biannual',
+      certificate: 'Yes',
+      mode: 'In-Person',
+      description: 'Master full-stack development, AI, and data science. This programme combines technical skills with real-world projects and industry mentorship.',
+      modules: ['Frontend Development', 'Backend Architecture', 'Database Management', 'Machine Learning', 'DevOps & Cloud'],
+      tuition: '₦550,000'
+    },
+    {
+      id: 4,
+      category: 'professional',
+      icon: 'fas fa-user-graduate',
+      title: 'Professional Development',
+      badge: '8 Weeks',
+      duration: '8 Weeks',
+      intake: 'Monthly',
+      certificate: 'Yes',
+      mode: 'Hybrid',
+      description: 'Enhance your professional skills with our intensive development programme covering leadership, communication, and career advancement strategies.',
+      modules: ['Leadership Skills', 'Communication & Branding', 'Career Strategy', 'Project Management', 'Networking & Mentorship'],
+      tuition: '₦250,000'
+    },
+    {
+      id: 5,
+      category: 'technology',
+      icon: 'fas fa-robot',
+      title: 'AI & Data Science',
+      badge: '16 Weeks',
+      duration: '16 Weeks',
+      intake: 'Biannual',
+      certificate: 'Yes',
+      mode: 'In-Person',
+      description: 'Dive deep into artificial intelligence and data science. Learn to build intelligent systems and derive insights from complex data sets.',
+      modules: ['Python for Data Science', 'Statistical Analysis', 'Deep Learning', 'Natural Language Processing', 'Big Data Technologies'],
+      tuition: '₦500,000'
+    },
+    {
+      id: 6,
+      category: 'business',
+      icon: 'fas fa-bullhorn',
+      title: 'Digital Marketing',
+      badge: '10 Weeks',
+      duration: '10 Weeks',
+      intake: 'Quarterly',
+      certificate: 'Yes',
+      mode: 'Online',
+      description: 'Master the art of digital marketing including social media strategy, content marketing, SEO, and analytics to drive business growth.',
+      modules: ['Content Strategy', 'Social Media Marketing', 'SEO & SEM', 'Email Marketing', 'Analytics & Reporting'],
+      tuition: '₦300,000'
+    }
+  ];
+
+  // Filter programmes by category
+  const filteredProgrammes = activeCategory === 'all' 
+    ? programmes 
+    : programmes.filter(p => p.category === activeCategory);
+
+  // Featured programme features
+  const featuredFeatures = [
+    'Industry Mentorship',
+    'Real-World Projects',
+    'Resume & Interview Prep',
+    'Networking Opportunities',
+    'Job Placement Support',
+    'Alumni Network Access'
+  ];
+
+  return (
+    <>
+      {/* ===== GLASS NAVIGATION ===== */}
+      <nav className="glass-nav">
+        <div className="nav-logo">
+          <img src="/sia-logo.svg" alt="SIA Logo" width="160" height="48" />
+        </div>
+        
+        <button className={`hamburger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+          {navLinks.map((link) => (
+            <li key={link.to}>
+              <a href={link.to} className={link.active ? 'active' : ''} onClick={closeMenu}>
+                {link.label}
+              </a>
+            </li>
+          ))}
+          <li className="mobile-nav-actions">
+            <a href="/login" className="btn-glass" onClick={closeMenu}>Login</a>
+          </li>
+        </ul>
+
+        <div className="nav-actions">
+          <a href="/login/student-login.php" className="btn-glass">Login</a>
+        </div>
+      </nav>
+
+      {/* ===== PAGE HERO ===== */}
+      <section className="page-hero programmes-hero">
+        <div className="container">
+          <h1 data-aos="fade-up">Our Programmes</h1>
+          <p data-aos="fade-up" data-aos-delay="150">
+            Discover our comprehensive range of programmes designed to equip you with the skills, knowledge, and network to become a leader in your field.
+          </p>
+       
+        </div>
+      </section>
+
+      {/* ===== CATEGORY TABS ===== */}
+      <section className="category-tabs">
+        <div className="container">
+          <div className="tabs" data-aos="fade-up">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                className={`tab-btn ${activeCategory === category.id ? 'active' : ''}`}
+                onClick={() => setActiveCategory(category.id)}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== PROGRAMMES GRID ===== */}
+      <section className="programmes-section">
+        <div className="container">
+          <div className="programmes-grid">
+            {filteredProgrammes.map((programme, index) => (
+              <div 
+                className="programme-card-detailed" 
+                data-aos="fade-up" 
+                data-aos-delay={index * 100}
+                key={programme.id}
+              >
+                <div className="card-header">
+                  <div className="icon"><i className={programme.icon}></i></div>
+                  <h3>{programme.title}</h3>
+                  <span className="badge">{programme.badge}</span>
+                </div>
+                <div className="card-body">
+                  <div className="info-grid">
+                    <div className="info-item"><i className="fas fa-clock"></i> Duration: {programme.duration}</div>
+                    <div className="info-item"><i className="fas fa-users"></i> Intake: {programme.intake}</div>
+                    <div className="info-item"><i className="fas fa-certificate"></i> Certificate: {programme.certificate}</div>
+                    <div className="info-item"><i className="fas fa-globe"></i> Mode: {programme.mode}</div>
+                  </div>
+                  <p>{programme.description}</p>
+                  <div className="modules">
+                    <h5>Key Modules</h5>
+                    <ul>
+                      {programme.modules.map((module, idx) => (
+                        <li key={idx}>{module}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="card-footer">
+                  <div className="tuition">{programme.tuition} <span>per cohort</span></div>
+                  <div>
+                    <a href="#" className="btn-learn">Learn More →</a>
+                    <a href="/admissions" className="btn-apply">Apply Now</a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== FRESH GRADUATE PROGRAMME (Featured) ===== */}
+      <section className="featured-programme">
+        <div className="container">
+          <div className="content" data-aos="fade-right">
+            <h2>Fresh Graduate Programme</h2>
+            <p className="subtitle">12-Week Transition to Industry-Ready Professional</p>
+            <p>
+              Our flagship programme designed specifically for recent graduates. Bridge the gap between academia and industry with hands-on training, mentorship, and real-world projects that prepare you for the competitive job market.
+            </p>
+            <div className="features">
+              {featuredFeatures.map((feature, index) => (
+                <div className="feature-item" key={index}>
+                  <i className="fas fa-check-circle"></i> {feature}
+                </div>
+              ))}
+            </div>
+            <a href="/admissions" className="btn-primary">Apply Now</a>
+          </div>
+          <div className="image-placeholder" data-aos="fade-left">
+            <i className="fas fa-user-graduate"></i>
+            <h4>Next Cohort: January 2026</h4>
+            <p>Early bird registration ends December 15, 2025</p>
+            <p style={{ marginTop: '12px', fontSize: '0.8rem', opacity: '0.5' }}>Limited slots available</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== CTA BANNER ===== */}
+      <section className="cta-banner section-padding">
+        <div className="container" data-aos="zoom-in">
+          <h2>Ready to Start Your Journey?</h2>
+          <p>Choose a programme that fits your goals and take the first step toward becoming a leader in your field.</p>
+          <a href="/admissions" className="btn-primary">Apply Today</a>
+        </div>
+      </section>
+
+      {/* ===== FOOTER ===== */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-grid">
+            <div>
+              <h3>SIA</h3>
+              <p>Start-up Innovation Academy</p>
+              <p><i className="fas fa-map-pin"></i> 123 Innovation Drive, Lagos</p>
+              <p><i className="fas fa-phone"></i> +234 800 123 4567</p>
+              <p><i className="fas fa-envelope"></i> info@sia.edu</p>
+            </div>
+            <div>
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/programmes">Programmes</a></li>
+                <li><a href="/admissions">Admissions</a></li>
+                <li><a href="/research">Research</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Follow Us</h4>
+              <div className="social-icons">
+                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                <a href="#"><i className="fab fa-instagram"></i></a>
+              </div>
+              <h4>Newsletter</h4>
+              <form onSubmit={(e) => e.preventDefault()}>
+                <input type="email" placeholder="Your email" />
+                <button type="submit"><i className="fas fa-arrow-right"></i></button>
+              </form>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>&copy; 2026 Start-up Innovation Academy. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* ===== AI FLOATING ASSISTANT ===== */}
+      <div className="ai-assistant">
+        <div className="ai-toggle" onClick={toggleAI}>
+          <i className="fas fa-robot"></i>
+        </div>
+        <div className={`ai-window glass ${isAIOpen ? 'open' : ''}`}>
+          <div className="ai-header">
+            SIA Assistant
+            <span onClick={toggleAI} style={{ cursor: 'pointer' }}>✕</span>
+          </div>
+          <div className="ai-body">
+            {aiMessages.map((msg, index) => (
+              <p key={index} className={msg.type === 'user' ? 'user-message' : 'bot-message'}>
+                {msg.type === 'user' ? 'You: ' : 'SIA: '}
+                {msg.text}
+              </p>
+            ))}
+            <div ref={messagesEndRef} />
+          </div>
+          <div className="ai-input">
+            <input 
+              type="text" 
+              placeholder="Type your question..." 
+              value={aiInput}
+              onChange={(e) => setAiInput(e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+            <button onClick={askAI}>
+              <i className="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Programmes;
