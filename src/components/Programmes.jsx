@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';  
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './Programmes.css';
 
 const FreshGraduate = () => {
+  const navigate = useNavigate();  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAIOpen, setIsAIOpen] = useState(false);
   const [aiMessages, setAiMessages] = useState([
@@ -490,6 +492,179 @@ const FreshGraduate = () => {
           </div>
         </div>
       </section>
+
+      {/* ===== OUR PROGRAMMES ===== */}
+<section className="our-programmes section-padding">
+  <div className="container">
+    <h2 data-aos="fade-up">Our Programmes</h2>
+    <p className="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+      Choose from our comprehensive range of programmes designed to launch your career
+    </p>
+    
+    <div className="programmes-grid-modern" data-aos="fade-up">
+      {/* Programme 1: Entrepreneurship */}
+      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="100">
+        <div className="programme-card-header">
+          <div className="programme-icon" style={{ background: 'rgba(184, 105, 48, 0.15)' }}>
+            <i className="fas fa-lightbulb" style={{ color: '#B86930' }}></i>
+          </div>
+          <span className="programme-badge">12 Weeks</span>
+        </div>
+        <h3>Entrepreneurship</h3>
+        <p>An intensive 12-week bootcamp designed to transform aspiring entrepreneurs into business leaders. Learn to validate ideas, build MVPs, and launch successful startups.</p>
+        <div className="programme-features">
+          <span className="feature-tag">Ideation & Validation</span>
+          <span className="feature-tag">Business Model Canvas</span>
+          <span className="feature-tag">Financial Planning</span>
+          <span className="feature-tag">Marketing Strategy</span>
+          <span className="feature-tag">Pitch & Fundraising</span>
+        </div>
+        <div className="programme-card-footer">
+          <div className="programme-price">
+            <span className="price">₦350,000</span>
+            <span className="mode">Hybrid</span>
+          </div>
+        
+<button 
+  className="btn-apply-programme" 
+  onClick={() => navigate('/signup', { 
+    state: { 
+      course: { 
+        title: 'Entrepreneurship', 
+        price: '₦350,000' 
+      } 
+    } 
+  })}
+  style={{ background: '#B86930' }}
+>
+  Apply Now <i className="fas fa-arrow-right"></i>
+</button>
+        </div>
+      </div>
+
+      {/* Programme 2: Business Management */}
+      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="200">
+        <div className="programme-card-header">
+          <div className="programme-icon" style={{ background: 'rgba(224, 154, 80, 0.15)' }}>
+            <i className="fas fa-chart-line" style={{ color: '#E09A50' }}></i>
+          </div>
+          <span className="programme-badge">16 Weeks</span>
+        </div>
+        <h3>Business Management</h3>
+        <p>Develop strategic leadership and operational excellence skills over 16 weeks. Covers management principles, organizational behavior, and business strategy.</p>
+        <div className="programme-features">
+          <span className="feature-tag">Strategic Management</span>
+          <span className="feature-tag">Operations & Logistics</span>
+          <span className="feature-tag">Human Resources</span>
+          <span className="feature-tag">Financial Management</span>
+          <span className="feature-tag">Business Analytics</span>
+        </div>
+        <div className="programme-card-footer">
+          <div className="programme-price">
+            <span className="price">₦450,000</span>
+            <span className="mode">Online</span>
+          </div>
+  
+<button 
+  className="btn-apply-programme" 
+  onClick={() => navigate('/signup', { 
+    state: { 
+      course: { 
+        title: 'Entrepreneurship', 
+        price: '₦350,000' 
+      } 
+    } 
+  })}
+  style={{ background: '#B86930' }}
+>
+  Apply Now <i className="fas fa-arrow-right"></i>
+</button>
+          
+        </div>
+      </div>
+
+      {/* Programme 3: Technology */}
+      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="300">
+        <div className="programme-card-header">
+          <div className="programme-icon" style={{ background: 'rgba(74, 42, 18, 0.15)' }}>
+            <i className="fas fa-code" style={{ color: '#4A2A12' }}></i>
+          </div>
+          <span className="programme-badge">24 Weeks</span>
+        </div>
+        <h3>Technology</h3>
+        <p>Master full-stack development, AI, and data science over 24 weeks. Combines technical skills with real-world projects and industry mentorship.</p>
+        <div className="programme-features">
+          <span className="feature-tag">Frontend Development</span>
+          <span className="feature-tag">Backend Architecture</span>
+          <span className="feature-tag">Database Management</span>
+          <span className="feature-tag">Machine Learning</span>
+          <span className="feature-tag">DevOps & Cloud</span>
+        </div>
+        <div className="programme-card-footer">
+          <div className="programme-price">
+            <span className="price">₦550,000</span>
+            <span className="mode">In-Person</span>
+          </div>
+   
+<button 
+  className="btn-apply-programme" 
+  onClick={() => navigate('/signup', { 
+    state: { 
+      course: { 
+        title: 'Entrepreneurship', 
+        price: '₦350,000' 
+      } 
+    } 
+  })}
+  style={{ background: '#B86930' }}
+>
+  Apply Now <i className="fas fa-arrow-right"></i>
+</button>
+        </div>
+      </div>
+
+      {/* Programme 4: Professional Courses */}
+      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="400">
+        <div className="programme-card-header">
+          <div className="programme-icon" style={{ background: 'rgba(42, 22, 8, 0.15)' }}>
+            <i className="fas fa-user-graduate" style={{ color: '#2A1608' }}></i>
+          </div>
+          <span className="programme-badge">8 Weeks</span>
+        </div>
+        <h3>Professional Courses</h3>
+        <p>Enhance your professional skills with intensive development programmes covering leadership, communication, and career advancement strategies.</p>
+        <div className="programme-features">
+          <span className="feature-tag">Leadership Skills</span>
+          <span className="feature-tag">Communication & Branding</span>
+          <span className="feature-tag">Career Strategy</span>
+          <span className="feature-tag">Project Management</span>
+          <span className="feature-tag">Networking & Mentorship</span>
+        </div>
+        <div className="programme-card-footer">
+          <div className="programme-price">
+            <span className="price">₦250,000</span>
+            <span className="mode">Hybrid</span>
+          </div>
+     
+<button 
+  className="btn-apply-programme" 
+  onClick={() => navigate('/signup', { 
+    state: { 
+      course: { 
+        title: 'Entrepreneurship', 
+        price: '₦350,000' 
+      } 
+    } 
+  })}
+  style={{ background: '#B86930' }}
+>
+  Apply Now <i className="fas fa-arrow-right"></i>
+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* ===== PROGRAMME LOGISTICS ===== */}
       <section className="programme-logistics section-padding">

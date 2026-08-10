@@ -489,3 +489,217 @@
     padding: 16px;
   }
 }
+
+/* ================================================================
+   OUR PROGRAMMES SECTION
+   ================================================================ */
+
+.our-programmes {
+  background: #FEFCF8;
+  padding: 80px 0;
+}
+
+.our-programmes h2 {
+  font-size: 2.8rem;
+  color: #2A1608;
+  text-align: center;
+  margin-bottom: 8px;
+  font-family: 'Georgia', serif;
+}
+
+.our-programmes .section-subtitle {
+  text-align: center;
+  color: #4A2A12;
+  opacity: 0.7;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+
+.programmes-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.programme-card-modern {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 30px 28px;
+  border: 1px solid #E8E0D4;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.programme-card-modern:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+  border-color: #F5D08A;
+}
+
+.programme-card-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #B86930, #F5D08A);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.programme-card-modern:hover::before {
+  opacity: 1;
+}
+
+.programme-card-modern .programme-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.programme-card-modern .programme-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.programme-card-modern .programme-badge {
+  background: #F5ECD7;
+  color: #4A2A12;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.programme-card-modern h3 {
+  font-size: 1.4rem;
+  color: #2A1608;
+  margin-bottom: 10px;
+  font-family: 'Georgia', serif;
+}
+
+.programme-card-modern > p {
+  color: #4A2A12;
+  opacity: 0.8;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.programme-card-modern .programme-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.programme-card-modern .programme-features .feature-tag {
+  background: #F5ECD7;
+  color: #4A2A12;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.programme-card-modern .programme-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #E8E0D4;
+}
+
+.programme-card-modern .programme-price {
+  display: flex;
+  flex-direction: column;
+}
+
+.programme-card-modern .programme-price .price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2A1608;
+  font-family: 'Georgia', serif;
+}
+
+.programme-card-modern .programme-price .mode {
+  font-size: 0.75rem;
+  color: #4A2A12;
+  opacity: 0.6;
+}
+
+.programme-card-modern .btn-apply-programme {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 30px;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.programme-card-modern .btn-apply-programme:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(184, 105, 48, 0.3);
+}
+
+/* ================================================================
+   RESPONSIVE FOR PROGRAMMES SECTION
+   ================================================================ */
+
+@media (max-width: 992px) {
+  .programmes-grid-modern {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .programmes-grid-modern {
+    grid-template-columns: 1fr;
+  }
+  
+  .programme-card-modern {
+    padding: 24px 20px;
+  }
+  
+  .our-programmes h2 {
+    font-size: 2rem;
+  }
+  
+  .programme-card-modern .programme-card-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .programme-card-modern .btn-apply-programme {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .our-programmes h2 {
+    font-size: 1.6rem;
+  }
+  
+  .programme-card-modern {
+    padding: 18px 16px;
+  }
+  
+  .programme-card-modern .programme-card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
