@@ -186,13 +186,34 @@ const StudentLife = () => {
   ];
 
   // Gallery items
-  const galleryItems = [
-    { label: 'SIA Campus', wide: false },
-    { label: 'Innovation Lab', wide: false },
-    { label: 'Hackathon Event', wide: true },
-    { label: 'Student Collaboration', wide: false },
-    { label: 'Graduation Ceremony', wide: false }
-  ];
+// Gallery items with real images
+const galleryItems = [
+  { 
+    label: 'SIA Graduants', 
+    wide: false,
+    image:   'https://images.unsplash.com/photo-1623461487986-9400110de28e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhZHVhdGlvbiUyMHBob3RvfGVufDB8fDB8fHww'
+  },
+  { 
+    label: 'Innovation Lab', 
+    wide: false,
+    image:  'https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG9ubGluZSUyMGVkdWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D'
+  },
+  { 
+    label: 'Career Growth', 
+    wide: true,
+    image: 'https://plus.unsplash.com/premium_photo-1733306477044-bcc3c374da91?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGNhcmVlciUyMGdyb3d0aHxlbnwwfHwwfHx8MA%3D%3D'
+  },
+  { 
+    label: 'Student Collaboration', 
+    wide: false,
+    image: 'https://images.unsplash.com/photo-1766074903112-79661da9ab45?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fG9ubGluZSUyMHJlbW90ZSUyMGNsYXNzfGVufDB8fDB8fHww'
+  },
+  { 
+    label: 'Graduation Ceremony', 
+    wide: false,
+    image: 'https://images.unsplash.com/photo-1589948516895-db76617cb753?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNlcnRpZmljYXRlfGVufDB8fDB8fHww'
+  }
+];
 
   // Alumni data
   const alumni = [
@@ -357,26 +378,30 @@ const StudentLife = () => {
         </div>
       </section>
 
-      {/* ===== GALLERY ===== */}
-      <section className="gallery">
-        <div className="container">
-          <h2 data-aos="fade-up">Photo Gallery</h2>
-          <div className="gallery-grid">
-            {galleryItems.map((item, index) => (
-              <div 
-                className={`gallery-item ${item.wide ? 'gallery-wide' : ''}`} 
-                data-aos="zoom-in" 
-                data-aos-delay={index * 100}
-                key={index}
-              >
-                <div className="placeholder"><i className="fas fa-image"></i></div>
-                <div className="overlay">{item.label}</div>
-              </div>
-            ))}
-          </div>
+ 
+{/* ===== GALLERY ===== */}
+<section className="gallery">
+  <div className="container">
+    <h2 data-aos="fade-up">Photo Gallery</h2>
+    <div className="gallery-grid">
+      {galleryItems.map((item, index) => (
+        <div 
+          className={`gallery-item ${item.wide ? 'gallery-wide' : ''}`} 
+          data-aos="zoom-in" 
+          data-aos-delay={index * 100}
+          key={index}
+        >
+          <img 
+            src={item.image} 
+            alt={item.label} 
+            loading="lazy"
+          />
+          <div className="overlay">{item.label}</div>
         </div>
-      </section>
-
+      ))}
+    </div>
+  </div>
+</section>
       {/* ===== ALUMNI ===== */}
       <section className="alumni">
         <div className="container">

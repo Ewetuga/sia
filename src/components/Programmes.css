@@ -219,7 +219,7 @@
 }
 
 .phase-1-header { background: linear-gradient(135deg, #9a7a5a, #9a7a5a); }
-.phase-2-header { background: linear-gradient(135deg,#b86930, #f5ecd7); }
+.phase-2-header { background: linear-gradient(135deg,#b86930, #575247); }
 .phase-3-header { background: linear-gradient(135deg, #000, #3c2010); }
 
 
@@ -702,4 +702,30 @@
     flex-wrap: wrap;
     gap: 8px;
   }
+}
+
+/* Disabled button styles */
+.btn-apply-programme:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-apply-programme:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Badge for coming soon */
+.btn-coming-soon-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #dc3545;
+  color: #fff;
+  font-size: 0.6rem;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }

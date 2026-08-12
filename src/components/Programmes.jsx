@@ -502,8 +502,49 @@ const FreshGraduate = () => {
     </p>
     
     <div className="programmes-grid-modern" data-aos="fade-up">
-      {/* Programme 1: Entrepreneurship */}
-      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="100">
+  {/* Programme 1: Entrepreneurship */}
+
+  <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="100">
+        <div className="programme-card-header">
+          <div className="programme-icon" style={{ background: 'rgba(42, 22, 8, 0.15)' }}>
+            <i className="fas fa-user-graduate" style={{ color: '#2A1608' }}></i>
+          </div>
+          <span className="programme-badge">8 Weeks</span>
+        </div>
+        <h3>Professional Readiness Course(PRC)</h3>
+        <p>Enhance your professional skills with intensive development programmes covering leadership, communication, and career advancement strategies.</p>
+        <div className="programme-features">
+          <span className="feature-tag">Leadership Skills</span>
+          <span className="feature-tag">Communication & Branding</span>
+          <span className="feature-tag">Career Strategy</span>
+          <span className="feature-tag">Project Management</span>
+          <span className="feature-tag">Networking & Mentorship</span>
+        </div>
+        <div className="programme-card-footer">
+          <div className="programme-price">
+            <span className="price">₦250,000</span>
+            <span className="mode">Hybrid</span>
+          </div>
+     
+<button 
+  className="btn-apply-programme" 
+  onClick={() => navigate('/signup', { 
+    state: { 
+      course: { 
+        title: 'Entrepreneurship', 
+        price: '₦350,000' 
+      } 
+    } 
+  })}
+  style={{ background: '#B86930' }}
+>
+  Apply Now <i className="fas fa-arrow-right"></i>
+</button>
+        </div>
+      </div>
+
+      {/* Programme 2: Entrepreneurship */}
+      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="200">
         <div className="programme-card-header">
           <div className="programme-icon" style={{ background: 'rgba(184, 105, 48, 0.15)' }}>
             <i className="fas fa-lightbulb" style={{ color: '#B86930' }}></i>
@@ -535,15 +576,15 @@ const FreshGraduate = () => {
       } 
     } 
   })}
-  style={{ background: '#B86930' }}
+  style={{ background: '#B86930', cursor: 'not-allowed' }}
 >
-  Apply Now <i className="fas fa-arrow-right"></i>
+  coming soon <i className="fas fa-arrow-right"></i>
 </button>
         </div>
       </div>
 
-      {/* Programme 2: Business Management */}
-      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="200">
+      {/* Programme 3: Business Management */}
+      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="300">
         <div className="programme-card-header">
           <div className="programme-icon" style={{ background: 'rgba(224, 154, 80, 0.15)' }}>
             <i className="fas fa-chart-line" style={{ color: '#E09A50' }}></i>
@@ -575,16 +616,16 @@ const FreshGraduate = () => {
       } 
     } 
   })}
-  style={{ background: '#B86930' }}
+  style={{ background: '#B86930', cursor: 'not-allowed' }}
 >
-  Apply Now <i className="fas fa-arrow-right"></i>
+  coming Soon <i className="fas fa-arrow-right"></i>
 </button>
           
         </div>
       </div>
 
-      {/* Programme 3: Technology */}
-      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="300">
+      {/* Programme 4: Technology */}
+      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="400">
         <div className="programme-card-header">
           <div className="programme-icon" style={{ background: 'rgba(74, 42, 18, 0.15)' }}>
             <i className="fas fa-code" style={{ color: '#4A2A12' }}></i>
@@ -616,52 +657,15 @@ const FreshGraduate = () => {
       } 
     } 
   })}
-  style={{ background: '#B86930' }}
+  style={{ background: '#B86930', cursor: 'not-allowed' }}
 >
-  Apply Now <i className="fas fa-arrow-right"></i>
+  coming Soon <i className="fas fa-arrow-right"></i>
 </button>
         </div>
       </div>
 
       {/* Programme 4: Professional Courses */}
-      <div className="programme-card-modern" data-aos="fade-up" data-aos-delay="400">
-        <div className="programme-card-header">
-          <div className="programme-icon" style={{ background: 'rgba(42, 22, 8, 0.15)' }}>
-            <i className="fas fa-user-graduate" style={{ color: '#2A1608' }}></i>
-          </div>
-          <span className="programme-badge">8 Weeks</span>
-        </div>
-        <h3>Professional Courses</h3>
-        <p>Enhance your professional skills with intensive development programmes covering leadership, communication, and career advancement strategies.</p>
-        <div className="programme-features">
-          <span className="feature-tag">Leadership Skills</span>
-          <span className="feature-tag">Communication & Branding</span>
-          <span className="feature-tag">Career Strategy</span>
-          <span className="feature-tag">Project Management</span>
-          <span className="feature-tag">Networking & Mentorship</span>
-        </div>
-        <div className="programme-card-footer">
-          <div className="programme-price">
-            <span className="price">₦250,000</span>
-            <span className="mode">Hybrid</span>
-          </div>
-     
-<button 
-  className="btn-apply-programme" 
-  onClick={() => navigate('/signup', { 
-    state: { 
-      course: { 
-        title: 'Entrepreneurship', 
-        price: '₦350,000' 
-      } 
-    } 
-  })}
-  style={{ background: '#B86930' }}
->
-  Apply Now <i className="fas fa-arrow-right"></i>
-</button>
-        </div>
-      </div>
+    
     </div>
   </div>
 </section>
