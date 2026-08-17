@@ -1,25 +1,44 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SIA",
+  "name": "Start-up Innovation Academy",
+  "description": "Start-up Innovation Academy - Learn. Innovate. Lead. Empowering the next generation of entrepreneurs, business leaders, and technology innovators.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "sia-icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "logo192.png",
+      "src": "sia-icon-512.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
+      "src": "sia-icon-144.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "144x144"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2A1608",
+  "background_color": "#FEFCF8",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["education", "business", "technology", "innovation", "entrepreneurship"],
+  "prefer_related_applications": false,
+  "screenshots": [
+    {
+      "src": "screenshot-1.png",
+      "type": "image/png",
+      "sizes": "1080x1920"
+    },
+    {
+      "src": "screenshot-2.png",
+      "type": "image/png",
+      "sizes": "1080x1920"
+    }
+  ]
 }
